@@ -15,14 +15,20 @@ class TimePickerFragment : DialogFragment() {
     interface Callbacks {
         fun onTimeSelected(time: Date)
     }
+
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val timeListener = TimePickerDialog.OnTimeSetListener { _: TimePicker, hour: Int, minute: Int ->
-            val resultTime : Time = Time(hour, minute, 0)
-            targetFragment?.let { fragment -> (fragment as Callbacks).onTimeSelected(resultTime)
-            }
-        }
-        val time = arguments?.getSerializable(ARG_TIME) as Time
         val calendar = Calendar.getInstance()
+        val calendarYear = calendar.get(Calendar.YEAR)
+        val calendarMonth = calendar.get(Calendar.MONTH)
+        val calendarDay = calendar.get(Calendar.DAY_OF_MONTH)
+        val timeListener = TimePickerDialog.OnTimeSetListener { _: TimePicker, hour: Int, minute: Int ->
+
+            calendar.set(Calendar.HOUR_OF_DAY, hour)
+            calendar.set(Calendar.MINUTE, minute)
+            val resultTime : Date = GregorianCalendar(calendarYear, calendarMonth, calendarDay, hour, minute).time
+                targetFragment?.let { fragment -> (fragment as Callbacks).onTimeSelected(resultTime)}
+        }
+        val time = arguments?.getSerializable(ARG_TIME) as Date
         calendar.time = time
         val initialHour = calendar.get(Calendar.HOUR)
         val initialMinute = calendar.get(Calendar.MINUTE)

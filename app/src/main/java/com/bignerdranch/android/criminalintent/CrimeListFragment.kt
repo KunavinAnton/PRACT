@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
@@ -84,8 +85,21 @@ class CrimeListFragment : Fragment() {
     }
 
     private fun updateUI(crimes: List<Crime>) {
-        adapter = CrimeAdapter(crimes)
-        crimeRecyclerView.adapter = adapter
+        val imageButton = view?.findViewById(R.id.imageButton) as ImageButton
+        if (crimes.isEmpty()){
+            imageButton.visibility = View.VISIBLE
+            imageButton.setOnClickListener{
+                val crime = Crime()
+                crimeListViewModel.addCrime(crime)
+                callbacks?.onCrimeSelected(crime.id)
+
+                imageButton.visibility = View.INVISIBLE
+            }
+        } else{
+            adapter = CrimeAdapter(crimes)
+            crimeRecyclerView.adapter = adapter
+        }
+
     }
 
     companion object {

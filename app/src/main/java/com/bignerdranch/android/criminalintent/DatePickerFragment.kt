@@ -2,8 +2,10 @@ package com.bignerdranch.android.criminalintent
 
 import android.app.DatePickerDialog
 import android.app.Dialog
+import android.app.TimePickerDialog
 import android.os.Bundle
 import android.widget.DatePicker
+import android.widget.TimePicker
 import androidx.fragment.app.DialogFragment
 import java.util.*
 
@@ -16,6 +18,9 @@ class DatePickerFragment : DialogFragment() {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val dateListener = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, month: Int, day: Int ->
+            TimePickerDialog.OnTimeSetListener{_: TimePicker, hour:Int,  minute:Int ->
+
+            }
             val resultDate : Date = GregorianCalendar(year, month, day).time
             targetFragment?.let { fragment -> (fragment as Callbacks).onDateSelected(resultDate)
             }
