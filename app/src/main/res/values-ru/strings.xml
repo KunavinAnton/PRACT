@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Криминальная Россия</string>
+    <string name="crime_title_hint">Введите название для дела</string>
+    <string name="crime_title_label">Название</string>
+    <string name="crime_details_label">Детали</string>
+    <string name="crime_solved_label">Дело раскрыто</string>
+
+    <string name="call_police">Вызвать полицию</string>
+    <string name="crime_title">Название дела</string>
+    <string name="crime_date">Дата</string>
+    <string name="requieres_police">Требуется полиция</string>
+
+    <string name="new_crime">Новое дело</string>
+
+    <string name="crime_suspect_text">Выберите подозреваемого</string>
+    <string name="crime_report_text">Отправить рапорт</string>
+
+    <string name="crime_report">%1$s!Преступление было раскрыто %2$s. %3$s,and %4$s</string>
+    <string name="crime_report_solved">Дело раскрыто</string>
+    <string name="crime_report_unsolved">Дело не раскрыто</string>
+    <string name="crime_report_no_suspect">нет подозреваемого</string>
+    <string name="crime_report_suspect">подозреваемый %s.</string>
+    <string name="crime_report_subject">Отчет об уголовном преступлении</string>
+    <string name="send_report">Отправить сообщение через</string>
+
+
+    <string name="crime_photo_button_description">Сделать фото преступления</string>
+    <string name="crime_photo_no_image_description">Фото преступления не установлено</string>
+    <string name="crime_photo_image_description">Фото преступления установлено</string>
+</resources>
