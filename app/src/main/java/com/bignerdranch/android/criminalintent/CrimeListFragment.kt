@@ -5,6 +5,7 @@ import android.content.Context
 import android.os.Bundle
 import android.util.Log
 import android.view.*
+import android.view.animation.AnimationUtils
 import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
@@ -72,7 +73,6 @@ class CrimeListFragment : Fragment() {
         }
     }
 
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         crimeListViewModel.crimeListLiveData.observe(
@@ -107,9 +107,11 @@ class CrimeListFragment : Fragment() {
             return CrimeListFragment()
         }
     }
+
     private inner class CrimeHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListener {
         val titleTextView: TextView = itemView.findViewById(R.id.crime_title)
         val dateTextView: TextView = itemView.findViewById(R.id.crime_date)
+
         private val solvedImageView: ImageView = itemView.findViewById(R.id.crime_solved)
         private lateinit var crime: Crime
 
@@ -161,6 +163,7 @@ class CrimeListFragment : Fragment() {
         }
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
             val crime = crimes[position]
+            holder.itemView.animation = AnimationUtils.loadAnimation(holder.itemView.context, R.anim.rv_animation)
             when(holder){
                 is CrimeHolder -> holder.bind(crime)
             }

@@ -1,5 +1,6 @@
 package com.bignerdranch.android.criminalintent
 
+import android.annotation.SuppressLint
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.app.TimePickerDialog
@@ -16,6 +17,7 @@ class TimePickerFragment : DialogFragment() {
         fun onTimeSelected(time: Date)
     }
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val calendar = Calendar.getInstance()
         val calendarYear = calendar.get(Calendar.YEAR)

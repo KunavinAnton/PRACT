@@ -1,7 +1,11 @@
 package com.bignerdranch.android.criminalintent
 
+import android.R.attr.button
+import android.animation.ArgbEvaluator
+import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.content.pm.ResolveInfo
@@ -9,21 +13,24 @@ import android.net.Uri
 import android.os.Bundle
 import android.provider.ContactsContract
 import android.provider.MediaStore
-import androidx.lifecycle.Observer
 import android.text.Editable
 import android.text.TextWatcher
 import android.text.format.DateFormat
 import android.view.LayoutInflater
+import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import androidx.core.content.FileProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.test.core.app.ApplicationProvider
+import androidx.test.core.app.ApplicationProvider.getApplicationContext
 import java.io.File
-import java.sql.Time
 import java.text.SimpleDateFormat
 import java.util.*
+
 
 private const val ARG_CRIME_ID = "crime_id"
 private const val TAG = "CrimeFragment"
@@ -162,6 +169,16 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks, TimePickerFragme
     @SuppressLint("QueryPermissionsNeeded")
     override fun onStart() {
         super.onStart()
+//        val colorFade = ObjectAnimator.ofObject(
+//            button,
+//            "backgroundColor",
+//            ArgbEvaluator(),
+//            ApplicationProvider.getApplicationContext<Context>().getResources().getColor(R.color.gray),
+//            ApplicationProvider.getApplicationContext<Context>().getResources().getColor(R.color.red)
+//        )
+//        colorFade.duration = 1000
+//        colorFade.startDelay = 200
+
         val titleWatcher = object : TextWatcher
         {
             override fun beforeTextChanged(
@@ -230,7 +247,17 @@ class CrimeFragment : Fragment(), DatePickerFragment.Callbacks, TimePickerFragme
                 startActivityForResult(captureImage, REQUEST_PHOTO)
             }
         }
-
+//
+//        dateButton.setOnTouchListener(object : View.OnTouchListener {
+//            override fun onTouch(p0: View?, event: MotionEvent?): Boolean {
+//                when(event?.action){
+//                    MotionEvent.ACTION_DOWN -> {
+//                        colorFade.start()
+//                    }
+//                }
+//                return true
+//            }
+//        })
     }
 
 
